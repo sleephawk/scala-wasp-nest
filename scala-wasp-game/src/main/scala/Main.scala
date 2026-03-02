@@ -36,7 +36,9 @@ import scala.io.StdIn.readLine
         println("Y|N")
         val continue: String = readLine()
         if (continue == "Y" || continue == "") {
-          runGame(0, nest, true)
+          val cn = new Nest
+          val continueNest = cn.nestInstance
+          runGame(0, continueNest, true)
         } else {
           println("Great work today, maybe next time")
         }
@@ -49,12 +51,11 @@ import scala.io.StdIn.readLine
           val newNest = nest.updated(i, updatedWasp)
           println("You hit " + updatedWasp)
           println("The nest is still alive!")
-          println(newNest)
+          println(newNest.foreach(println))
           val n: Int = acc + 1
           println("you've attacked this many times: " + n)
-          val cn = new Nest
-          val continueNest = cn.nestInstance
-          runGame(n, continueNest)
+
+          runGame(n, newNest)
       }} else {
         println("please enter a valid command")
       }
