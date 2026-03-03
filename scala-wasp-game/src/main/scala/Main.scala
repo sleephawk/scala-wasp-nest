@@ -8,7 +8,7 @@ import scala.io.StdIn.readLine
   def runGame(acc: Int, nestInPlay: List[Wasp], replay: Boolean = false): String | Unit = {
       if (acc <= 0 && !replay) {
       printWaspNest() 
-      println("Welcome to the hive! Your name is?")
+      println("Welcome to the nest! Your name is?")
       val firstName = readLine()
       printWasp()
       println("Welcome " + firstName)
@@ -20,27 +20,29 @@ import scala.io.StdIn.readLine
 
       if (acc <= 0){
       println("CONTROLS:")
-      println("SHOOT: type 'return' or press enter")}
+      println("SHOOT: type 'fire'")}
 
         val command = readLine()
-        if (command == "return" || command.isEmpty()) {
+        if (command == "fire") {
 
         val i = scala.util.Random.nextInt(nestInPlay.length)
         val hitWasp = nestInPlay(i)
         if (hitWasp.isInstanceOf[Queen]) {
         printBalloon()
         println("You hit the Queen! Congratulations")
-        println("It took you " + acc + " shots to do it, but you got it done!")
+        println("It took you " + (acc + 1) + " shots to do it, but you got it done!")
         println("I hear a-buzzin across the road from here, seems your work isn't done yet...")
-        println("Play again?")
-        println("Y|N")
+        println("Play again? Type 'restart' to play or 'exit' to leave")
+        println("restart | exit")
         val continue: String = readLine()
-        if (continue == "Y" || continue == "") {
+        if (continue == "restart") {
           val cn = new Nest
           val continueNest = cn.nestInstance
           runGame(0, continueNest, true)
-        } else {
+        } else if (continue == "exit") {
           println("Great work today, maybe next time")
+        } else {
+          println("We'll take that as a no...")
         }
         } else {
           //CORE GAME LOGIC
@@ -48,16 +50,19 @@ import scala.io.StdIn.readLine
           case w: Worker => w.copy(hp = w.hp - w.damage)
           case d: Drone  => d.copy(hp = d.hp - d.damage)
         }
-          val newNest = nest.updated(i, updatedWasp)
-          println("You hit " + updatedWasp)
-          println("The nest is still alive!")
-          println(newNest.foreach(println))
+          val newNest = nestInPlay.updated(i, updatedWasp)
+          printBlast()
+          println("You just hit " + updatedWasp + " for " + updatedWasp.damage)
+          println("The nest is still alive! Shoot damnit shoot!")
+          newNest.foreach(println)
+          val cleanedNest = newNest.filterNot(n => n.hp == 0)
           val n: Int = acc + 1
           println("you've attacked this many times: " + n)
+          runGame(n, cleanedNest)
 
-          runGame(n, newNest)
       }} else {
         println("please enter a valid command")
+        runGame(acc, nestInPlay)
       }
       }
 

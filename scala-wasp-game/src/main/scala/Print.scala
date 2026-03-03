@@ -62,3 +62,14 @@ class printBalloon() {
     println("           `.")
     println("")
 }
+
+class printBlast() {
+    println("")
+    println("   !BLAM!    ")
+    println("*     *    *")
+    println("   * *** * ")
+    println("* * *   * * *")
+    println("   * *** *  ")
+    println(" *    *   * ")
+    println("")
+}
