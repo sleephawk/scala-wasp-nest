@@ -5,13 +5,15 @@ import scala.io.StdIn.readLine
   val nest = startingNest.nestInstance
   runGame(0, nest)
 
-  def runGame(acc: Int, nestInPlay: List[Wasp], replay: Boolean = false): String | Unit = {
+  def runGame(acc: Int, nestInPlay: List[Wasp], replay: Boolean = false, name: String = null): String | Unit = {
+      var gameName: String = name
       if (acc <= 0 && !replay) {
       printWaspNest() 
       println("Welcome to the nest! Your name is?")
-      val firstName = readLine()
+      gameName = readLine()
+      
       printWasp()
-      println("Welcome " + firstName)
+      println("Welcome " + name)
       println("You stand before a wasp's nest, and it's up to you to kill every last wasp.")
       println("")
       println("Problem is you're using a peashooter, but don't worry! You have the needlepoint accuracy of a greek deity.")
@@ -33,11 +35,11 @@ import scala.io.StdIn.readLine
           case w: Worker => w.copy(hp = w.hp - w.damage)
           case d: Drone  => d.copy(hp = d.hp - d.damage)
         }
+        
         val newNest = nestInPlay.updated(i, updatedWasp)
         printBlast()
         println("You just hit " + updatedWasp + " for " + updatedWasp.damage)
-        val cleanedNest = newNest.filterNot(n => n.hp == 0)
-        println(cleanedNest)
+        val cleanedNest = newNest.filterNot(n => n.hp <= 0)
         if (!cleanedNest.exists { case _: Queen => true; case _ => false}) {
           printBalloon()
           println("You killed the Queen! Congratulations")
@@ -49,24 +51,30 @@ import scala.io.StdIn.readLine
           if (continue == "restart") {
             val cn = new Nest
             val continueNest = cn.nestInstance
-            runGame(0, continueNest, true)
+            runGame(0, continueNest, true, gameName)
           } else if (continue == "quit") {
             println("Great work today, maybe next time")
           } else {
             println("We'll take that as a no...")
         }   
+        } else if (cleanedNest.length < nestInPlay.length) {
+          println("looks like you got one of the f£^&$rs, great job " + name + "!")
+          cleanedNest.foreach(println)
+          val n: Int = acc + 1
+          println("you've used this many bullets: " + n)
+          runGame(n, cleanedNest, false, gameName)
         } else {
-        println("The nest is still alive! Shoot damnit shoot!")
-        newNest.foreach(println)
+        println("The nest is still alive! Damnit " + name + " shoot!")
+        cleanedNest.foreach(println)
         val n: Int = acc + 1
-        println("you've attacked this many times: " + n)
-        runGame(n, cleanedNest)
+        println("you've used this many bullets: " + n)
+        runGame(n, cleanedNest, false, gameName)
 
       }} else if (command == "auto"){
           println("")
       } else {
         println("please enter a valid command")
-        runGame(acc, nestInPlay)
+        runGame(acc, nestInPlay, false, gameName)
       }
       }
 
