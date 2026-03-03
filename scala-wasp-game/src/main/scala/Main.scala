@@ -14,7 +14,7 @@ import scala.io.StdIn.readLine
       
       printWasp()
       println("Welcome " + gameName)
-      println("You stand before a wasp's nest, and it's up to you to kill every last wasp.")
+      println("You stand before a wasp nest, and it's up to you to kill every last wasp.")
       println("")
       println("Problem is you're using a peashooter, but don't worry! You have the needlepoint accuracy of a greek deity.")
       println("")
@@ -46,7 +46,7 @@ import scala.io.StdIn.readLine
           println("You killed the Queen! Congratulations")
           println("It took you " + (acc + 1) + " shots to do it, but you got it done!")
           println("I hear a-buzzin across the road from here, seems your work isn't done yet...")
-          println("Play again? Type 'restart' to play or 'exit' to leave")
+          println("Play again? Type 'restart' to play or 'quit' to leave")
           println("restart | quit")
           val continue: String = readLine()
           if (continue == "restart") {
@@ -87,7 +87,9 @@ import scala.io.StdIn.readLine
         runGame(n, cleanedNest, false, gameName)
 
       }} else if (command == "auto"){
-          println("")
+          println("Ahhh s**t I forgot to mod the gun for ya....oooh well....nice weather we're having eh.....so")
+          println("let's just, pretend it never happened...start again eh?")
+          runGame(acc, nestInPlay, replay, gameName)
       } else if (command == "quit"){
           printSkull()
           println("Well bye I guess. I guess I'll be terminated by these wasps then will I?")
