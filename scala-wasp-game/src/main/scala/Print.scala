@@ -73,3 +73,28 @@ class printBlast() {
     println(" *    *   * ")
     println("")
 }
+
+class printSkull(){
+println("         .... NO! ...                  ... MNO! ...")
+println("   ..... MNO!! ...................... MNNOO! ...")
+println(" ..... MMNO! ......................... MNNOO!! .")
+println("..... MNOONNOO!   MMMMMMMMMMPPPOII!   MNNO!!!! .")
+println(" ... !O! NNO! MMMMMMMMMMMMMPPPOOOII!! NO! ....")
+println("    ...... ! MMMMMMMMMMMMMPPPPOOOOIII! ! ...")
+println("   ........ MMMMMMMMMMMMPPPPPOOOOOOII!! .....")
+println("   ........ MMMMMOOOOOOPPPPPPPPOOOOMII! ...")
+println("    ....... MMMMM..    OPPMMP    .,OMI! ....")
+println("     ...... MMMM::   o.,OPMP,.o   ::I!! ...")
+println("         .... NNM:::.,,OOPM!P,.::::!! ....")
+println("          .. MMNNNNNOOOOPMO!!IIPPO!!O! .....")
+println("         ... MMMMMNNNNOO:!!:!!IPPPPOO! ....")
+println("           .. MMMMMNNOOMMNNIIIPPPOO!! ......")
+println("          ...... MMMONNMMNNNIIIOO!..........")
+println("       ....... MN MOMMMNNNIIIIIO! OO ..........")
+println("    ......... MNO! IiiiiiiiiiiiI OOOO ...........")
+println("  ...... NNN.MNO! . O!!!!!!!!!O . OONO NO! ........")
+println("   .... MNNNNNO! ...OOOOOOOOOOO .  MMNNON!........")
+println("   ...... MNNNNO! .. PPPPPPPPP .. MMNON!........")
+println("      ...... OO! ................. ON! .......")
+println("         ................................")
+}

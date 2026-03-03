@@ -74,6 +74,7 @@ import scala.io.StdIn.readLine
       }} else if (command == "auto"){
           println("")
       } else if (command == "quit"){
+          printSkull()
           println("Well bye I guess. I guess I'll be terminated by these wasps then will I?")
           println("I know you must be tired of using your gun powers but really? We need you friend.")
           println("Who else is going to.....hang on...I hear buzzing....no.....NOOOOOOOO")
