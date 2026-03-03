@@ -1,5 +1,5 @@
 case class Queen(hp: Int = 80) extends Wasp {
-  val name = "Queen"
+  val name = "the Queen"
   val damage = 7
 }
 
@@ -17,6 +17,7 @@ case class Drone(hp: Int = 60) extends Wasp {
  class Nest() {
   val nestInstance: List[Wasp] = List(Queen()) ++ List.fill(5)(Worker()) ++ List.fill(8)(Drone())
 }
+
 
 trait Wasp {
   def name: String
