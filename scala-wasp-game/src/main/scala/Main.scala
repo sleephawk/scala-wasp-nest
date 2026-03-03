@@ -23,7 +23,8 @@ import scala.io.StdIn.readLine
       if (acc <= 0){
       println("CONTROLS:")
       println("fire': shoots a wasp")
-      println("'auto': autofire through the game; see how many shots it takes")}
+      println("'auto': autofire through the game; see how many shots it takes")
+      println("'quit': end the game....already...")}
         val command = readLine()
         if (command == "fire") {
         //CORE GAME LOGIC P1
@@ -72,6 +73,10 @@ import scala.io.StdIn.readLine
 
       }} else if (command == "auto"){
           println("")
+      } else if (command == "quit"){
+          println("Well bye I guess. I guess I'll be terminated by these wasps then will I?")
+          println("I know you must be tired of using your gun powers but really? We need you friend.")
+          println("Who else is going to.....hang on...I hear buzzing....no.....NOOOOOOOO")
       } else {
         println("please enter a valid command")
         runGame(acc, nestInPlay, false, gameName)
